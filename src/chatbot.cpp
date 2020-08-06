@@ -169,3 +169,20 @@ ChatBot::ChatBot(ChatBot &&source) {
     source._chatLogic = nullptr;
     source._image = nullptr;
 }
+
+ChatBot &ChatBot::operator=(ChatBot &&source) {
+    std::cout << "ChatBot Move Assign Constructor in chatbot class" << std::endl;
+    if (&source == this) 
+    { 
+        return *this; 
+    }
+    _image = source._image;
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;
+    source._currentNode = nullptr;
+    source._rootNode = nullptr;
+    source._chatLogic = nullptr;
+    source._image = nullptr;
+    return *this;
+}
