@@ -158,3 +158,14 @@ ChatBot::ChatBot(const ChatBot &source) {
     _image = new wxBitmap(*source._image);
 }
 
+ChatBot::ChatBot(ChatBot &&source) {
+    std::cout << "ChatBot Move Constructor in chatbot class" << std::endl;
+    _image = source._image;
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;
+    source._currentNode = nullptr;
+    source._rootNode = nullptr;
+    source._chatLogic = nullptr;
+    source._image = nullptr;
+}
