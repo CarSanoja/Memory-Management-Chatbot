@@ -148,3 +148,13 @@ int ChatBot::ComputeLevenshteinDistance(std::string s1, std::string s2)
 
     return result;
 }
+
+ChatBot::ChatBot(const ChatBot &source) {
+
+    std::cout << "ChatBot  Constructor for copy in chatbot class" << std::endl;
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;
+    _image = new wxBitmap(*source._image);
+}
+
