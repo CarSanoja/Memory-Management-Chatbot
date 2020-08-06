@@ -186,3 +186,17 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
     source._image = nullptr;
     return *this;
 }
+
+ChatBot &ChatBot::operator=(const ChatBot &source) {
+
+    std::cout << "ChatBot Copy Assign Constructor in chatbot class" << std::endl;
+    if (&source == this) 
+    { 
+        return *this; 
+    }
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;
+    _image = new wxBitmap(*source._image);
+    return *this;
+}
