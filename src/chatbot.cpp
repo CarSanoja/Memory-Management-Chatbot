@@ -149,6 +149,8 @@ int ChatBot::ComputeLevenshteinDistance(std::string s1, std::string s2)
     return result;
 }
 
+// RULE OF FIVE DECLARATION
+
 ChatBot::ChatBot(const ChatBot &source) {
 
     std::cout << "ChatBot  Constructor for copy in chatbot class" << std::endl;
