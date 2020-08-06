@@ -134,7 +134,7 @@ ChatBotPanelDialog::~ChatBotPanelDialog()
 {
     //// STUDENT CODE
     ////
-    // does not make sense to delete here
+    // does not make sense to delete here, smart pointer will delete itself using the current config
     //delete _chatLogic;
 
     ////
