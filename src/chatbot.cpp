@@ -175,7 +175,7 @@ ChatBot::ChatBot(ChatBot &&source) {
 
 ChatBot &ChatBot::operator=(const ChatBot &source) {
 
-    std::cout << "ChatBot Copy Assign Constructor in chatbot class" << std::endl;
+    std::cout << "ChatBot Copy Assign operator in chatbot class" << std::endl;
     if (&source == this) 
     { 
         return *this; 
@@ -189,7 +189,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
 
 ChatBot &ChatBot::operator=(ChatBot &&source) {
 
-    std::cout << "ChatBot Move Assign Constructor in chatbot class" << std::endl;
+    std::cout << "ChatBot Move Assign operator in chatbot class" << std::endl;
     if (&source == this) 
     { 
         return *this; 

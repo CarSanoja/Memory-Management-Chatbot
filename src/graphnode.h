@@ -16,6 +16,14 @@ public:
     //// STUDENT CODE
     ////
 
+    /*
+
+    change the ownership of all instances of GraphEdge in a way such that each instance 
+    of GraphNode exclusively owns the outgoing GraphEdges and holds non-owning references 
+    to incoming GraphEdges. 
+
+    */
+
     // data handles (owned) - changing to unique pointer
     std::vector<std::unique_ptr<GraphEdge>> _childEdges;  // edges to subsequent nodes
 
