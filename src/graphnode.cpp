@@ -1,59 +1,58 @@
 #include "graphedge.h"
 #include "graphnode.h"
+#include "chatlogic.h"
+#include <iostream>
 
-GraphNode::GraphNode(int id)
-{
+GraphNode::GraphNode(int id) {
     _id = id;
 }
 
-GraphNode::~GraphNode()
-{
+GraphNode::~GraphNode() {
     //// STUDENT CODE
     ////
-    // this was deleted to quit the initial bug, it does not have sense
+
+    // this was deleted to quit the initial bug, it does not make sense
     //delete _chatBot; 
 
     ////
     //// EOF STUDENT CODE
 }
 
-void GraphNode::AddToken(std::string token)
-{
+void GraphNode::AddToken(std::string token) {
     _answers.push_back(token);
 }
 
-void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
-{
+void GraphNode::AddEdgeToParentNode(GraphEdge *edge) {
     _parentEdges.push_back(edge);
 }
-
-void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
-{
-    _childEdges.push_back(edge);
+//as the child node now is a smart pointer, in order to prsed it the definition is changed
+void GraphNode::AddEdgeToChildNode(GraphEdge *edge) {
+    _childEdges.push_back(std::unique_ptr<GraphEdge>(edge));
 }
 
 //// STUDENT CODE
 ////
-void GraphNode::MoveChatbotHere(ChatBot *chatbot)
-{
-    _chatBot = chatbot;
-    _chatBot->SetCurrentNode(this);
+// parsing the objetc as a R reference
+void GraphNode::MoveChatbotHere(ChatBot &&chatBot) {
+    _chatBot = std::move(chatBot);
+    // update the chatLogic
+    _chatBot.GetChatLogicHandle()->SetChatbotHandle(&_chatBot); 
+    // for some reason the operator -> give some build troubles
+    // as an object it was changed to properly compile
+    _chatBot.SetCurrentNode(this);
 }
 
-void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
-{
-    newNode->MoveChatbotHere(_chatBot);
-    _chatBot = nullptr; // invalidate pointer at source
+void GraphNode::MoveChatbotToNewNode(GraphNode *newNode) {
+    newNode->MoveChatbotHere(std::move(_chatBot));
 }
 ////
 //// EOF STUDENT CODE
 
-GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
-{
+GraphEdge *GraphNode::GetChildEdgeAtIndex(int index) {
     //// STUDENT CODE
     ////
-
-    return _childEdges[index];
+    // to get the value from the smart pointer .get is neded
+    return _childEdges[index].get();
 
     ////
     //// EOF STUDENT CODE

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 #include "chatbot.h"
 
 
@@ -11,16 +12,16 @@ class GraphEdge;
 
 class GraphNode
 {
-private:
+public:
     //// STUDENT CODE
     ////
 
-    // data handles (owned)
-    std::vector<GraphEdge *> _childEdges;  // edges to subsequent nodes
+    // data handles (owned) - changing to unique pointer
+    std::vector<std::unique_ptr<GraphEdge>> _childEdges;  // edges to subsequent nodes
 
     // data handles (not owned)
     std::vector<GraphEdge *> _parentEdges; // edges to preceding nodes 
-    ChatBot *_chatBot;
+    ChatBot _chatBot;
 
     ////
     //// EOF STUDENT CODE
@@ -48,8 +49,8 @@ public:
 
     //// STUDENT CODE
     ////
-
-    void MoveChatbotHere(ChatBot *chatbot);
+    // instead of passing a pointer object, parsing the object as an an RValue-Reference
+    void MoveChatbotHere(ChatBot && chatbot);
 
     ////
     //// EOF STUDENT CODE
