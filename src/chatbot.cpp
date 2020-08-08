@@ -166,7 +166,7 @@ ChatBot::ChatBot(ChatBot &&source) {
     _chatLogic = source._chatLogic;
     _image = source._image;
     // reset source info
-    source._image = nullptr;
+    source._image = NULL;
     source._rootNode = nullptr;
     source._currentNode = nullptr;
     source._chatLogic = nullptr;
@@ -199,7 +199,7 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
     _chatLogic = source._chatLogic;
     _image = source._image;
     // reset source info
-    source._image = nullptr;
+    source._image = NULL;
     source._rootNode = nullptr;
     source._currentNode = nullptr;
     source._chatLogic = nullptr;
