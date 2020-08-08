@@ -58,7 +58,7 @@ public:
     //// STUDENT CODE
     ////
     // instead of passing a pointer object, parsing the object as an an RValue-Reference
-    void MoveChatbotHere(ChatBot && chatbot);
+    void MoveChatbotHere(ChatBot chatbot);
 
     ////
     //// EOF STUDENT CODE
