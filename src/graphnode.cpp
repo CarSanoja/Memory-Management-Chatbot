@@ -33,7 +33,7 @@ void GraphNode::AddEdgeToChildNode(GraphEdge *edge) {
 //// STUDENT CODE
 ////
 // parsing the objetc as a R reference
-void GraphNode::MoveChatbotHere(ChatBot &&chatBot) {
+void GraphNode::MoveChatbotHere(ChatBot chatBot) {
     _chatBot = std::move(chatBot);
     // update the chatLogic
     _chatBot.GetChatLogicHandle()->SetChatbotHandle(&_chatBot); 
