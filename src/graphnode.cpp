@@ -26,8 +26,8 @@ void GraphNode::AddEdgeToParentNode(GraphEdge *edge) {
     _parentEdges.push_back(edge);
 }
 //as the child node now is a smart pointer, in order to prsed it the definition is changed
-void GraphNode::AddEdgeToChildNode(GraphEdge *edge) {
-    _childEdges.push_back(std::unique_ptr<GraphEdge>(edge));
+void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge) {
+    _childEdges.push_back(std::move(edge));
 }
 
 //// STUDENT CODE
