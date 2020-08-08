@@ -36,10 +36,10 @@ ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor in chatbot class" << std::endl;
     // if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
-    // {
-    //     delete _image;
-    //     _image = NULL;
-    // }
+    {
+        delete _image;
+        _image = NULL;
+    }
 }
 
 //// STUDENT CODE
